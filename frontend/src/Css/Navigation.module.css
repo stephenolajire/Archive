@@ -2,6 +2,10 @@ html {
     font-size: 62.5%;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -71,5 +75,59 @@ html {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+.optionCont {
+  display: none;
+}
+
+.menu, .close{
+  display: none;
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .navLinks {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #f4f4f4;
+    top: 10rem;
+    width: 100%;
+    left: 0;
+    gap: 0rem;
+    z-index: 100;
+    transform: translateX(-100%);
+  }
+
+  .navbar {
+    padding: 1rem 1rem;
+  }
+
+  .text {
+    display: none;
+  }
+
+  .optionCont {
+    display: block;
+  }
+
+  .search {
+    width: 22rem;
+  }
+
+  .open {
+    transform: translateX(0%);
+    transition: transform 1s ease;
+  }
+
+  .closes {
+    transform: translateX(-100%);
+    transition: transform 1s ease;
+  }
+
+  .menu, .close {
+    display: block;
   }
 }

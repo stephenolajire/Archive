@@ -1,0 +1,16 @@
+:root {
+  --primary-color: #234a86;
+  --secondary-color: #646e83;
+  --tertiary-color: #B9C9C5;
+  --text-size: 1.8rem ;
+  --header-size: 4.5rem;
+  --small-header:2.5rem;
+  --line-height: 3rem;
+  --color: #fff;
+  --margin: 1.5rem;
+  --black: #131313;
+}
+
+body {
+  font-family: Roboto;
+}

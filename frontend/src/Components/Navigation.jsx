@@ -1,25 +1,38 @@
 // File: Navigation.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from '../Css/Navigation.module.css';
-import { House, BookOpen, InfoIcon, Contact } from "lucide-react";
+import { House, BookOpen, InfoIcon, Contact, Menu, X } from "lucide-react";
 import logo from '../assets/logo.jpg'
 
 const Navigation = () => {
+
+  const [menu, setMenu] = useState(true)
+
+  const toggleMenu = () => {
+    setMenu(!menu)
+  }
   return (
     <nav className={styles.navbar}>
       <img src={logo} className={styles.logo} />
-      <input className={styles.search} type='search' placeholder='search for journals/books'/>
-      <ul className={styles.navLinks}>
+      <input
+        className={styles.search}
+        type="search"
+        placeholder="search for journals/books"
+      />
+      <ul
+        className={`${styles.navLinks} ${menu ? styles.closes : styles.open}`}
+      >
         <li>
           <NavLink
             to="/"
             className={({ isActive }) =>
               isActive ? styles.activeLink : styles.link
             }
+            onClick={menu ? styles.closes : styles.open}
           >
             <div className={styles.wrapper}>
-              <House size={24} className={styles.icon} />
+              <House size={20} className={styles.icon} />
               <p className={styles.linkText}>Home</p>
             </div>
           </NavLink>
@@ -30,9 +43,10 @@ const Navigation = () => {
             className={({ isActive }) =>
               isActive ? styles.activeLink : styles.link
             }
+            onClick={menu ? styles.closes : styles.open}
           >
             <div className={styles.wrapper}>
-              <BookOpen size={24} className={styles.icon} />
+              <BookOpen size={20} className={styles.icon} />
               <p className={styles.linkText}>Journal</p>
             </div>
           </NavLink>
@@ -43,9 +57,10 @@ const Navigation = () => {
             className={({ isActive }) =>
               isActive ? styles.activeLink : styles.link
             }
+            onClick={menu ? styles.closes : styles.open}
           >
             <div className={styles.wrapper}>
-              <InfoIcon size={24} className={styles.icon} />
+              <InfoIcon size={20} className={styles.icon} />
               <p className={styles.linkText}>About</p>
             </div>
           </NavLink>
@@ -56,14 +71,22 @@ const Navigation = () => {
             className={({ isActive }) =>
               isActive ? styles.activeLink : styles.link
             }
+            onClick={menu ? styles.closes : styles.open}
           >
             <div className={styles.wrapper}>
-              <Contact size={24} className={styles.icon} />
+              <Contact size={20} className={styles.icon} />
               <p className={styles.linkText}>Contact Us</p>
             </div>
           </NavLink>
         </li>
       </ul>
+      <div className={styles.optionCont}>
+        {menu ? (
+          <Menu size={32} className={styles.menu} onClick={toggleMenu} />
+        ) : (
+          <X size={32} className={styles.close} onClick={toggleMenu} />
+        )}
+      </div>
     </nav>
   );
 };

@@ -12,6 +12,7 @@ const Navigation = () => {
   const toggleMenu = () => {
     setMenu(!menu)
   }
+
   return (
     <nav className={styles.navbar}>
       <img src={logo} className={styles.logo} />
@@ -29,7 +30,7 @@ const Navigation = () => {
             className={({ isActive }) =>
               isActive ? styles.activeLink : styles.link
             }
-            onClick={menu ? styles.closes : styles.open}
+            onClick={toggleMenu}
           >
             <div className={styles.wrapper}>
               <House size={20} className={styles.icon} />
@@ -43,7 +44,7 @@ const Navigation = () => {
             className={({ isActive }) =>
               isActive ? styles.activeLink : styles.link
             }
-            onClick={menu ? styles.closes : styles.open}
+            onClick={toggleMenu}
           >
             <div className={styles.wrapper}>
               <BookOpen size={20} className={styles.icon} />
@@ -51,27 +52,14 @@ const Navigation = () => {
             </div>
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              isActive ? styles.activeLink : styles.link
-            }
-            onClick={menu ? styles.closes : styles.open}
-          >
-            <div className={styles.wrapper}>
-              <InfoIcon size={20} className={styles.icon} />
-              <p className={styles.linkText}>About</p>
-            </div>
-          </NavLink>
-        </li>
+        
         <li>
           <NavLink
             to="/contact"
             className={({ isActive }) =>
               isActive ? styles.activeLink : styles.link
             }
-            onClick={menu ? styles.closes : styles.open}
+            onClick={toggleMenu}
           >
             <div className={styles.wrapper}>
               <Contact size={20} className={styles.icon} />

@@ -22,7 +22,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     verified = models.BooleanField(default=False)
-    profile_image = models.ImageField(null=True)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

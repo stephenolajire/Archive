@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import style from "../css/Login.module.css";
 import logo from "../assets/logo.jpg";
 import api from "../Api/api";
+import axios from "axios";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -38,22 +39,25 @@ const Signup = () => {
       return;
     }
 
+    const userData = {
+      first_name: firstname,
+      last_name : lastname,
+      password : password,
+      email : email
+    }
+
     setErrors({});
     setLoading(true);
     try {
-      const response = await api.post("signup", {
-        email,
-        password,
-        firstname,
-        lastname,
-      });
-      if (response.status === 200) {
+      const response = await api.post("signup/", userData);
+      if (response.status === 201) {
         navigate("/login");
       } else {
         setErrors({ global: "Something went wrong. Please try again." });
       }
     } catch (error) {
       setErrors({ global: "An error occurred. Please try again." });
+      console.log(error)
     } finally {
       setLoading(false);
     }

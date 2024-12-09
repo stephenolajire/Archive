@@ -9,7 +9,7 @@ const api = axios.create({
 
 api.interceptors.request.use (
     (config) => {
-        token = localStorage.getItem ("access")
+        const token = localStorage.getItem ("access")
         if (token) {
             const decode = jwtDecode(token)
             const exp_date = decode.exp

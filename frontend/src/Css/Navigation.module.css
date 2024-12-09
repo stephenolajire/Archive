@@ -96,9 +96,10 @@ body {
     top: 10rem;
     width: 100%;
     left: 0;
-    gap: 0rem;
+    gap: 3rem;
     z-index: 100;
     transform: translateX(-100%);
+    padding: 3rem;
   }
 
   .navbar {

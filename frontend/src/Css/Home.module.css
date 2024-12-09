@@ -18,13 +18,20 @@
     }
 }
 
+.container > div {
+    display: flex;
+    justify-content: space-evenly;
+    /* gap: 2rem; */
+    flex-direction: column;
+    height: 30rem;
+}
+
 /* Apply styles to specific child elements inside the container */
 .container > div:nth-child(1) {
     background-color: #B9C9C5;
-    /* opacity: 0.5; */
-    padding-left: 14rem;
-    padding-right: 4rem;
     animation: left 1s ease;
+    padding-left: 14rem;
+    padding-right: 3rem;
 }
 
 .discover, .featured, .community{
@@ -53,9 +60,8 @@
 
 .container > div:nth-child(2) {
     background-color: #D6D5CA;
-    padding: 0px 4rem;
-    text-align: center;
     animation: middle 1s ease;
+    padding: 0rem 3rem;
 }
 
 @keyframes right {
@@ -69,9 +75,9 @@
 
 .container > div:nth-child(3) {
     background-color: var(--primary-color);
-    padding-right: 14rem;
-    padding-left: 4rem;
     animation: right 1s ease;
+    padding-right: 14rem;
+    padding-left: 3rem;
 }
 
 .uploaded {
@@ -175,7 +181,6 @@
 .aboutCont {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin-top: 10rem;
     padding: 0rem 14rem;
     gap: 4rem;
 }
@@ -186,9 +191,10 @@
 }
 
 .aboutUs, .aboutUs1 {
-    color: var(--primary-color);
+    color: var(--black);
     font-size: var(--header-size);
     text-transform: capitalize;
+    opacity: 0.7;
 }
 
 .aboutUs1 {
@@ -200,6 +206,7 @@
     opacity: 0.7;
     font-size: 1.6rem;
     line-height: var(--line-height);
+    margin-top: 2rem;
 }
 
 .imgCont {
@@ -208,6 +215,29 @@
 
 .textCont {
     animation: right 1s ease;
+}
+
+.contactCont {
+    padding: 0rem 14rem;
+    margin-bottom: 10rem;
+}
+
+.contContact, .latest, .AboutCont {
+    height: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact {
+    font-size: var(--header-size);
+    color: var(--black);
+    opacity: 0.7;
+}
+
+.contactGrid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 }
 
 @media (min-width: 300px) and (max-width: 575px) {
@@ -249,5 +279,15 @@
     .aboutUs1 {
         display: block;
         padding-left: 2rem;
+    }
+
+    .contactGrid {
+        display: grid;
+        grid-template-columns: 1fr ;
+        gap: 2rem;
+    }
+
+    .contactCont {
+        padding: 0rem 2rem;
     }
 }

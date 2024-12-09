@@ -2,6 +2,7 @@ import React from "react";
 import Hero3 from "../assets/hero3.jpg";
 import Hero2 from "../assets/hero2.jpg";
 import style from "../Css/Hero.module.css";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -29,7 +30,9 @@ const Hero = () => {
               Welcome to Adeleke University <br /> Journals Archive platform
             </p>
           </div>
-          <button className={style.btn}>Get Started</button>
+          <Link to='/login'>
+            <button className={style.btn}>Get Started</button>
+          </Link>
         </div>
       </div>
     </div>

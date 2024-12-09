@@ -1,17 +1,16 @@
-import React, {useState} from 'react'
-import style from '../css/Login.module.css'
-import logo from '../assets/logo.jpg'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import style from "../css/Login.module.css";
+import logo from "../assets/logo.jpg";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className={style.container}>
+    <div className={style.container} >
       <div className={style.formContainer}>
         <form className={style.form}>
           <div className={style.plogodiv}>
@@ -69,6 +68,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

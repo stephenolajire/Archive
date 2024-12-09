@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import style from "../css/Login.module.css";
 import logo from "../assets/logo.jpg";
-import { Link } from "react-router-dom";
+import api from "../Api/api";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -9,13 +10,59 @@ const Signup = () => {
   const [cpassword, setCPassword] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const passwordRegrex =
+    /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const emailRegrex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newErrors = {};
+
+    if (!firstname || firstname.length < 2)
+      newErrors.firstname = "Enter a valid first name";
+    if (!lastname || lastname.length < 2)
+      newErrors.lastname = "Enter a valid last name";
+    if (!emailRegrex.test(email))
+      newErrors.email = "Enter a valid email address";
+    if (!passwordRegrex.test(password))
+      newErrors.password =
+        "Password must contain at least 8 characters, including a letter, a number, and a special character";
+    if (password !== cpassword) newErrors.cpassword = "Passwords do not match";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+    setLoading(true);
+    try {
+      const response = await api.post("signup", {
+        email,
+        password,
+        firstname,
+        lastname,
+      });
+      if (response.status === 200) {
+        navigate("/login");
+      } else {
+        setErrors({ global: "Something went wrong. Please try again." });
+      }
+    } catch (error) {
+      setErrors({ global: "An error occurred. Please try again." });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className={style.container}>
       <div className={style.formContainer}>
-        <form className={style.form}>
+        <form className={style.form} onSubmit={handleSubmit}>
           <div className={style.plogodiv}>
             <img className={style.plogo} src={logo} alt="logo" />
           </div>
@@ -26,26 +73,32 @@ const Signup = () => {
             Please provide your signup details correctly
           </p>
 
-          {error && <p className={style.error}>{error}</p>}
+          {errors.global && <p className={style.error}>{errors.global}</p>}
 
           <div className={style.formDiv}>
-            <label>FirstName</label>
+            <label>First Name</label>
             <input
               type="text"
               placeholder="Please enter your name"
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
             />
+            {errors.firstname && (
+              <p className={style.error}>{errors.firstname}</p>
+            )}
           </div>
 
           <div className={style.formDiv}>
-            <label>LastName</label>
+            <label>Last Name</label>
             <input
               type="text"
               placeholder="Please enter your surname"
               value={lastname}
               onChange={(e) => setLastname(e.target.value)}
             />
+            {errors.lastname && (
+              <p className={style.error}>{errors.lastname}</p>
+            )}
           </div>
 
           <div className={style.formDiv}>
@@ -56,6 +109,7 @@ const Signup = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            {errors.email && <p className={style.error}>{errors.email}</p>}
           </div>
 
           <div className={style.formDiv}>
@@ -66,32 +120,42 @@ const Signup = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {errors.password && (
+              <p className={style.error}>{errors.password}</p>
+            )}
           </div>
 
           <div className={style.formDiv}>
-            <label>ConfirmPassword</label>
+            <label>Confirm Password</label>
             <input
               type="password"
               placeholder="Please enter your password again"
               value={cpassword}
               onChange={(e) => setCPassword(e.target.value)}
             />
+            {errors.cpassword && (
+              <p className={style.error}>{errors.cpassword}</p>
+            )}
           </div>
+
           <div>
             <button
+              type="submit"
               className={style.login}
-              disabled={!email || !password || loading}
+              disabled={
+                !email || !password || !firstname || !lastname || loading
+              }
             >
-              {loading ? "Loading ..." : "Login"}
+              {loading ? "Loading ..." : "Sign Up"}
             </button>
           </div>
           <div>
             <p className={style.signupText}>
-              Don't have an account yet? Please click{" "}
+              Already have an account? Click{" "}
               <Link to="/login">
                 <span className={style.link}>here</span>
               </Link>{" "}
-              to signup
+              to login.
             </p>
           </div>
         </form>

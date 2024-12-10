@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Hero3 from "../assets/hero3.jpg";
 import Hero2 from "../assets/hero2.jpg";
 import style from "../Css/Hero.module.css";
 import { Link } from "react-router-dom";
+import { GlobalContext } from "../GlobalContext/GlobalContext";
 
 const Hero = () => {
+
+  const {isAuthenticated} = useContext (GlobalContext)
   return (
     <div>
       <div
@@ -30,9 +33,13 @@ const Hero = () => {
               Welcome to Adeleke University <br /> Journals Archive platform
             </p>
           </div>
-          <Link to='/login'>
-            <button className={style.btn}>Get Started</button>
-          </Link>
+          {isAuthenticated ? (
+            <p></p>
+          ) : (
+            <Link to="/login">
+              <button className={style.btn}>Get Started</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

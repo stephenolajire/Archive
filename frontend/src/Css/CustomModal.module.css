@@ -1,0 +1,26 @@
+.container {
+    position: relative;
+}
+
+.btnDiv {
+    position: relative;
+    max-width: 600px;
+    width: 100%; /* Ensures it takes up the full width up to 600px */
+    display: flex;
+    justify-content: flex-end; /* Aligns children to the right */
+    align-items: flex-end; /* Aligns children to the bottom */
+}
+
+.btn {
+    background-color: red;
+    color: var(--color);
+    font-size: 1.6rem;
+    width: 4rem;
+    height: 2rem;
+    text-align: center;
+    border: none;
+    position: absolute; /* Change to absolute */
+    z-index: 10;
+    right: 0; /* Aligns the button to the right edge of the .btnDiv */
+    top: 2rem; /* Adjust if needed */
+}

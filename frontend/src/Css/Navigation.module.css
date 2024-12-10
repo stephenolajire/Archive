@@ -36,9 +36,10 @@ body {
   display: flex;
   align-items: center;
   gap: 4rem;
+  list-style-type: none;
 }
 
-.link {
+.link, .upload, .logoutText, .loginText, .signupText {
   color: #646e83;
   text-decoration: none;
   font-size: 1.6rem;
@@ -86,6 +87,56 @@ body {
   display: none;
 }
 
+.logout, .login, .signup {
+  width: 12rem;
+  height: 4rem;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 2rem;
+  color: var(--color);
+}
+
+.signup {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  text-align: center;
+  background-color: var(--color);
+  margin-left: 1rem;
+
+}
+
+.logout:hover {
+  transform: scale(1.1);
+  transition: transform 1s ease;
+  cursor: pointer;
+}
+
+.logoutText, .loginText, .signupText, .upload {
+    display: none;
+  }
+
+  .divLogout {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .add {
+    color: var(--primary-color);
+    border: var(--primary-color);
+  }
+
+  .uploadDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--primary-color);
+    height: 4rem;
+    width: 4rem;
+    border-radius: 3rem;
+    justify-content: center;
+  }
+
 @media (min-width: 300px) and (max-width: 767px) {
   .navLinks {
     position: absolute;
@@ -100,6 +151,11 @@ body {
     z-index: 100;
     transform: translateX(-100%);
     padding: 3rem;
+    list-style-type: none;
+  }
+
+  .navLinks > li {
+    list-style-type: none;
   }
 
   .navbar {
@@ -130,5 +186,21 @@ body {
 
   .menu, .close {
     display: block;
+  }
+
+  .logoutList {
+    display: none;
+  }
+
+  .logoutText, .loginText, .signupText, .upload {
+    display: block;
+  }
+
+  .divAuth, .divLogout {
+    display: none;
+  }
+
+  a{
+    text-decoration: none;
   }
 }

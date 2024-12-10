@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import style from "../css/Login.module.css";
 import logo from "../assets/logo.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../Api/api";
+import { GlobalContext } from "../GlobalContext/GlobalContext";
 
 const Login = () => {
+
+  const {checkAuth} = useContext (GlobalContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
@@ -48,6 +51,7 @@ const Login = () => {
         localStorage.setItem("refresh", refresh);
 
         navigate("/");
+        checkAuth ();
       } else {
         setError({ global: "Something went wrong, please try again." });
       }

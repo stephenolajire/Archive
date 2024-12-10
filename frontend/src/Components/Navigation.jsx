@@ -1,16 +1,30 @@
 // File: Navigation.jsx
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import styles from '../Css/Navigation.module.css';
-import { House, BookOpen, InfoIcon, Contact, Menu, X } from "lucide-react";
-import logo from '../assets/logo.jpg'
+import React, { useContext, useState } from "react";
+import { NavLink, useNavigate, Link } from "react-router-dom";
+import styles from "../Css/Navigation.module.css";
+import { House, BookOpen, Plus, Contact, Menu, X } from "lucide-react";
+import logo from "../assets/logo.jpg";
+import { GlobalContext } from "../GlobalContext/GlobalContext";
 
 const Navigation = () => {
-
-  const [menu, setMenu] = useState(true)
+  const { isAuthenticated, checkAuth, setIsModalOpen, isModalOpen } = useContext(GlobalContext);
+  const [menu, setMenu] = useState(true);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
-    setMenu(!menu)
+    setMenu(!menu);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    navigate("/");
+    checkAuth();
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true)
+    console.log(isModalOpen)
   }
 
   return (
@@ -52,7 +66,7 @@ const Navigation = () => {
             </div>
           </NavLink>
         </li>
-        
+
         <li>
           <NavLink
             to="/contact"
@@ -67,7 +81,28 @@ const Navigation = () => {
             </div>
           </NavLink>
         </li>
+
+        {isAuthenticated ? (
+          <>
+            <li className={styles.logoutText} onClick={handleLogout}>
+              Logout
+            </li>
+            <Link onClick={toggleMenu}>
+              <li className={styles.upload} onClick={openModal}>Upload</li>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <li className={styles.loginText}>Login</li>
+            </Link>
+            <Link to="/signup">
+              <li className={styles.signupText}>Signup</li>
+            </Link>
+          </>
+        )}
       </ul>
+
       <div className={styles.optionCont}>
         {menu ? (
           <Menu size={32} className={styles.menu} onClick={toggleMenu} />
@@ -75,9 +110,29 @@ const Navigation = () => {
           <X size={32} className={styles.close} onClick={toggleMenu} />
         )}
       </div>
+      {isAuthenticated ? (
+        <div className={styles.divLogout}>
+          <div>
+            <div className={styles.uploadDiv} onClick={openModal}>
+              <Plus className={styles.add} size={25} />
+            </div>
+          </div>
+          <button className={styles.logout} onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+      ) : (
+        <div className={styles.divAuth}>
+          <Link to="/login">
+            <button className={styles.login}>Login</button>
+          </Link>
+          <Link to="/signup">
+            <button className={styles.signup}>Signup</button>
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };
 
 export default Navigation;
-

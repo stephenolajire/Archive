@@ -21,7 +21,7 @@ const App = () => {
           <Route path="signup" element={<Signup />} />
         </Routes>
         {/* Include CustomModal outside of Routes to make sure it is available globally */}
-        <CustomModal />
+        <CustomModal/>
       </Router>
     </GlobalProvider>
   );

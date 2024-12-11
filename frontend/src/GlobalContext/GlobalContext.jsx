@@ -72,6 +72,7 @@ export const GlobalProvider = ({children}) => {
             isModalOpen,
             journals,
             pagination,
+            checkAuth,
         }}
     >
         {children}

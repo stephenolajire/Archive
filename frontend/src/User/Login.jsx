@@ -7,7 +7,7 @@ import { GlobalContext } from "../GlobalContext/GlobalContext";
 
 const Login = () => {
 
-  const {checkAuth} = useContext (GlobalContext)
+  const {checkAuth, isAuthenticated} = useContext (GlobalContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
@@ -51,7 +51,8 @@ const Login = () => {
         localStorage.setItem("refresh", refresh);
 
         navigate("/");
-        checkAuth ();
+        checkAuth();
+        console.log(isAuthenticated)
       } else {
         setError({ global: "Something went wrong, please try again." });
       }

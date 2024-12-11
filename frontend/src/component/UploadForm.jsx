@@ -51,16 +51,17 @@ const UploadForm = () => {
       return;
     }
 
-    const uploadData = new FormData();
-    uploadData.append("project_name", projectName);
-    uploadData.append("department", department);
-    uploadData.append("discipline", discipline);
-    uploadData.append("faculty", faculty);
-    uploadData.append("front_page", frontPage);
-    uploadData.append("project_file", projectFile);
+    const uploadData = {
+      project_name: projectName,
+      project_file: projectFile,
+      faculty: faculty,
+      discipline: discipline,
+      front_page : frontPage,
+      department : department
+    };
 
+    setLoading(true);
     try {
-      setLoading(true);
       const response = await api.post("upload/", uploadData);
       if (response.status === 201) {
         Swal.fire("Success!", "Project uploaded successfully", "success");

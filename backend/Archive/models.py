@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from cloudinary_storage.storage import MediaCloudinaryStorage
 
 User = get_user_model()
 
@@ -9,8 +10,8 @@ class Archive(models.Model):
     department = models.CharField(max_length=200)
     discipline = models.CharField(max_length=200)
     faculty = models.CharField(max_length=200)
-    front_page = models.ImageField(upload_to="image")
-    project_file = models.FileField(upload_to="file")
+    front_page = models.ImageField(storage=MediaCloudinaryStorage(), upload_to="image")
+    project_file = models.FileField(storage=MediaCloudinaryStorage(), upload_to="file")
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -7,7 +7,8 @@ import logo from "../assets/logo.jpg";
 import { GlobalContext } from "../GlobalContext/GlobalContext";
 
 const Navigation = () => {
-  const { isAuthenticated, checkAuth, setIsModalOpen, isModalOpen } = useContext(GlobalContext);
+  const { isAuthenticated, checkAuth, setIsModalOpen, isModalOpen } =
+    useContext(GlobalContext);
   const [menu, setMenu] = useState(true);
   const navigate = useNavigate();
 
@@ -23,9 +24,9 @@ const Navigation = () => {
   };
 
   const openModal = () => {
-    setIsModalOpen(true)
-    console.log(isModalOpen)
-  }
+    setIsModalOpen(true);
+    console.log(isModalOpen);
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -88,7 +89,12 @@ const Navigation = () => {
               Logout
             </li>
             <Link onClick={toggleMenu}>
-              <li className={styles.upload} onClick={()=> setIsModalOpen(true)}>Upload</li>
+              <li
+                className={styles.upload}
+                onClick={() => setIsModalOpen(true)}
+              >
+                Upload
+              </li>
             </Link>
           </>
         ) : (

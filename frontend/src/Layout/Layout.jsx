@@ -1,12 +1,12 @@
 import React, { useContext } from "react"
-import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
+import Navigation from "../navigation/Navigation";
 
 const Layout = () => {
   return (
     <div>
-      <NavBar />
+      <Navigation />
       <Outlet />
       <Footer />
     </div>

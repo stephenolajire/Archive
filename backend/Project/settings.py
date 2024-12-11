@@ -217,7 +217,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': config('CLOUD_NAME'),
-    'API_KEY': config ('API_KEY'),
+    'API_KEY': '912634288932877',
     'API_SECRET': config('API_SECRET')
 }
 

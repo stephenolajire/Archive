@@ -14,7 +14,7 @@
 .cardContainer {
   background-color: var(--color);
   border-radius: 8px;
-  box-shadow: 0 2px 4px var(--secondary-color);
+  box-shadow: 0 0 2px 3px var(--secondary-color);
   display: flex;
   flex-direction: column;
   height: 100%;

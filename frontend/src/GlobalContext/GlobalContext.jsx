@@ -73,6 +73,7 @@ export const GlobalProvider = ({children}) => {
             journals,
             pagination,
             checkAuth,
+            fetchJournals,
         }}
     >
         {children}

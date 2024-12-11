@@ -1,9 +1,8 @@
-/* JournalCrad.module.css */
+JournalCrad.module.css
 .cardContainer {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 3fr;
   height: 100%;

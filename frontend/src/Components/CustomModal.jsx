@@ -11,7 +11,6 @@ const CustomModal = () => {
   const customStyle = {
     content: {
       maxWidth: "600px",
-      margin: "0 auto",
       height: "auto",
       position: "relative"
     },

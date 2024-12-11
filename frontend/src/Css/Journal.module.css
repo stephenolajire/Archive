@@ -1,4 +1,4 @@
-/* Journal.module.css */
+Journal.module.css
 .main {
   min-height: 60vh;
 }
@@ -15,7 +15,6 @@
   background-color: var(--color);
   border-radius: 8px;
   box-shadow: 0 2px 4px var(--secondary-color);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   height: 100%;

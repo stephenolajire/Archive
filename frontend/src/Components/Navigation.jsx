@@ -88,7 +88,7 @@ const Navigation = () => {
               Logout
             </li>
             <Link onClick={toggleMenu}>
-              <li className={styles.upload} onClick={openModal}>Upload</li>
+              <li className={styles.upload} onClick={()=> setIsModalOpen(true)}>Upload</li>
             </Link>
           </>
         ) : (

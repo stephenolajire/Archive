@@ -12,6 +12,7 @@ export const GlobalProvider = ({children}) => {
     const [journals, setJournals] = useState([])
     const [pagination, setPagination] = useState({next:null, previous:null})
     const link = "http://127.0.0.1:8000/api/"
+    const render = "https://archive-backend-g7fi.onrender.com/api/";
 
     const checkAuth = () => {
         const token = localStorage.getItem("access")
@@ -41,7 +42,7 @@ export const GlobalProvider = ({children}) => {
     }, []);
 
 
-    const fetchJournals = async(url= `${link}journals`) => {
+    const fetchJournals = async(url= `${render}journals`) => {
         try {
             const response = await axios.get(url);
             if (response) {

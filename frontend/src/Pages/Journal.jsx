@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useContext } from "react";
+import JournalCrad from "../components/JournalCrad";
+import { GlobalContext } from "../GlobalContext/GlobalContext";
+import styles from "../css/Journal.module.css"; // Import the CSS module
 
 const Journal = () => {
-  return (
-    <div>
-      Journal
-    </div>
-  )
-}
+  const { journals } = useContext(GlobalContext);
 
-export default Journal
+  return (
+    <main className={styles.main}>
+      {journals?.map((journal) => (
+        <div className={styles.mainContainer} key={journal.id}>
+          <JournalCrad key={journal.id} journal={journal} />
+        </div>
+      ))}
+    </main>
+  );
+};
+
+export default Journal;

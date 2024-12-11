@@ -4,6 +4,8 @@ import UploadForm from "./UploadForm";
 import { GlobalContext } from "../GlobalContext/GlobalContext";
 import style from "../css/CustomModal.module.css"
 
+Modal.setAppElement("#root");
+
 const CustomModal = () => {
   const { isModalOpen, setIsModalOpen } = useContext(GlobalContext);
   const customStyle = {

@@ -1,5 +1,7 @@
 from django.urls import path
+from .views import *
 
 urlpatterns = [
-    path("")
+    path("upload/", ArchiveView.as_view()),
+    path("journals", GetArchiveView.as_view())
 ]

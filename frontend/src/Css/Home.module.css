@@ -28,7 +28,7 @@
 
 /* Apply styles to specific child elements inside the container */
 .container > div:nth-child(1) {
-    background-color: #B9C9C5;
+    background-color: var(--tertiary-color);
     animation: left 1s ease;
     padding-left: 14rem;
     padding-right: 3rem;
@@ -59,7 +59,7 @@
 }
 
 .container > div:nth-child(2) {
-    background-color: #D6D5CA;
+    background-color: var(--secondary-color);
     animation: middle 1s ease;
     padding: 0rem 3rem;
 }

@@ -44,7 +44,7 @@ const Home = () => {
       </section>
       <section>
         <div className={style.latest}>
-          <h1 className={style.uploaded}>Latest Uploaded Journals</h1>
+          <h1 className={style.uploaded}>Our Vision</h1>
         </div>
         <div className={style.grid}>
           <div className={style.cardGrid}>

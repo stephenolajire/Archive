@@ -6,7 +6,7 @@ import Journal from "./Pages/Journal";
 import Login from "./User/Login";
 import Signup from "./User/Signup";
 import { GlobalProvider } from "./GlobalContext/GlobalContext";
-import CustomModal from './components/CustomModal'
+import UploadModal from "./modal/UploadModal";
 
 const App = () => {
   return (
@@ -21,7 +21,7 @@ const App = () => {
           <Route path="signup" element={<Signup />} />
         </Routes>
         {/* Include CustomModal outside of Routes to make sure it is available globally */}
-        <CustomModal/>
+        <UploadModal/>
       </Router>
     </GlobalProvider>
   );

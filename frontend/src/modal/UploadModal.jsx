@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import Modal from "react-modal";
-import UploadForm from "./UploadForm";
+import UploadForm from "../components/UploadForm";
 import { GlobalContext } from "../GlobalContext/GlobalContext";
 import style from "../css/CustomModal.module.css";
 
-// Modal.setAppElement("#root");
+Modal.setAppElement("#root");
 
-const CustomModal = () => {
+const UploadModal = () => {
   const { isModalOpen, setIsModalOpen } = useContext(GlobalContext);
 
   const customStyle = {
@@ -40,4 +40,4 @@ const CustomModal = () => {
   );
 };
 
-export default CustomModal;
+export default UploadModal;

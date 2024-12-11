@@ -15,3 +15,6 @@ class Archive(models.Model):
 
     def __str__(self):
         return self.project_name
+    
+    class Meta:
+        ordering = ['-created']

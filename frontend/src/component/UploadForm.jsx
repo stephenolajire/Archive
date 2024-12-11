@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2"; // Import SweetAlert2
-import styles from "../css/UploadForm.module.css"; // Import CSS module
+import styles from "../style/UploadForm.module.css"; // Import CSS module
 import logo from "../assets/logo.jpg";
 import api from "../Api/api";
 
@@ -173,14 +173,14 @@ const UploadForm = () => {
       </div>
       <div>
         <label className={styles.label} htmlFor="projectFile">
-          Project File:
+          Project File: (support pdf only)
         </label>
         <input
           className={styles.inputFile}
           type="file"
           id="projectFile"
           onChange={(e) => handleFileChange(e, setProjectFile)}
-          accept=".pdf,.doc,.docx"
+          accept=".pdf"
           required
         />
         {errors.projectFile && (

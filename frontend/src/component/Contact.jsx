@@ -1,6 +1,6 @@
 import React from 'react'
-import Form from './Form'
-import Social from './Social'
+import Form from '../component/Form'
+import Social from '../component/Social'
 import style from '../css/Home.module.css'
 
 const Contact = () => {

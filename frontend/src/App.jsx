@@ -6,7 +6,7 @@ import Journal from "./Pages/Journal";
 import Login from "./User/Login";
 import Signup from "./User/Signup";
 import { GlobalProvider } from "./GlobalContext/GlobalContext";
-import CustomModal from "./components/CustomModal"; // Adjust the path as needed
+import CustomModal from './components/CustomModal'
 
 const App = () => {
   return (

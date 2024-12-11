@@ -16,7 +16,7 @@ const JournalCrad = ({ journal }) => {
       </div>
       <div className={styles.cardContent}>
         <p className={styles.cardDescription}>{journal?.faculty}</p>
-        {journal?.project_name > 30 ? (
+        {journal?.project_name.length > 30 ? (
           <h1 className={styles.cardTitle}>{journal.project_name.slice(0, 30)} ...</h1>
         ): (
           <h1 className={styles.cardTitle}>{journal.project_name}</h1>

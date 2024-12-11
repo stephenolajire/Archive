@@ -6,18 +6,18 @@ import styles from "../style/Journal.module.css";
 const Journal = () => {
   const { journals, fetchJournals } = useContext(GlobalContext);
 
-  useEffect (() => {
-    fetchJournals()
-  }, [])
+  useEffect(() => {
+    fetchJournals();
+  }, []);
 
   return (
-    <main className={styles.main}>
-      <div className={styles.mainContainer}>
+    <div className={styles.mainContainer}>
+      <div className={styles.main}>
         {journals?.map((journal) => (
           <JournalCrad key={journal.id} journal={journal} />
         ))}
       </div>
-    </main>
+    </div>
   );
 };
 

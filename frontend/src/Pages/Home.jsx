@@ -4,6 +4,7 @@ import style from "../style/Home.module.css";
 import Card from "../component/Card";
 import About from "../component/About";
 import Contact from "../component/Contact";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -58,19 +59,21 @@ const Home = () => {
               talented students and alumni. Explore a variety of topics and gain
               fresh perspectives.
             </p>
-            <div className={style.buttonDiv}>
-              <button className={style.viewMoreButton}>
-                See More Journals
-              </button>
-            </div>
+            <Link to="/journals">
+              <div className={style.buttonDiv}>
+                <button className={style.viewMoreButton}>
+                  See More Journals
+                </button>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
       <section>
-        <About/>
+        <About />
       </section>
       <section>
-        <Contact/>
+        <Contact />
       </section>
     </main>
   );

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import JournalCrad from "../component/JournalCrad";
 import { GlobalContext } from "../GlobalContext/GlobalContext";
-import styles from "../style/Journal.module.css"; // Import the CSS module
+import styles from "../style/Journal.module.css";
 
 const Journal = () => {
   const { journals, fetchJournals } = useContext(GlobalContext);

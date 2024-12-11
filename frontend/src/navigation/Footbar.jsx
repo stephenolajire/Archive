@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../css/Footer.module.css";
+import styles from "../style/Footer.module.css";
 
 const Footbar = () => {
   return (

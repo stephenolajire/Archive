@@ -1,6 +1,6 @@
 import React from "react";
 import img from "../assets/hero2.jpg";
-import style from "../Css/Card.module.css";
+import style from "../style/Card.module.css";
 
 const Card = () => {
   return (

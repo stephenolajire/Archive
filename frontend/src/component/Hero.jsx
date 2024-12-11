@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Hero3 from "../assets/hero3.jpg";
 import Hero2 from "../assets/hero2.jpg";
-import style from "../Css/Hero.module.css";
+import style from "../style/Hero.module.css";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../GlobalContext/GlobalContext";
 

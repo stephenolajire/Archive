@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Modal from "react-modal";
 import UploadForm from "../component/UploadForm";
 import { GlobalContext } from "../GlobalContext/GlobalContext";
-import style from "../css/CustomModal.module.css";
+import style from "../style/CustomModal.module.css";
 
 Modal.setAppElement("#root");
 

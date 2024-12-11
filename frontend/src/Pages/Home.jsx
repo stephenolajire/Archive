@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "../component/Hero";
-import style from "../css/Home.module.css";
+import style from "../style/Home.module.css";
 import Card from "../component/Card";
 import About from "../component/About";
 import Contact from "../component/Contact";

@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from '../component/Form'
 import Social from '../component/Social'
-import style from '../css/Home.module.css'
+import style from '../style/Home.module.css'
 
 const Contact = () => {
   return (

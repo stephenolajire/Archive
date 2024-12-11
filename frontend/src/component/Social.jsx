@@ -1,5 +1,5 @@
 import React from "react";
-import style from "../css/Social.module.css";
+import style from "../style/Social.module.css";
 import { IoLocationOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
 import { SlPhone } from "react-icons/sl";

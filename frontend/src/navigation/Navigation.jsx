@@ -1,7 +1,7 @@
 // File: Navigation.jsx
 import React, { useContext, useState } from "react";
 import { NavLink, useNavigate, Link } from "react-router-dom";
-import styles from "../Css/Navigation.module.css";
+import styles from "../style/Navigation.module.css";
 import { House, BookOpen, Plus, Contact, Menu, X } from "lucide-react";
 import logo from "../assets/logo.jpg";
 import { GlobalContext } from "../GlobalContext/GlobalContext";

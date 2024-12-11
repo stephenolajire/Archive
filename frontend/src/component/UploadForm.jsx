@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2"; // Import SweetAlert2
-import styles from "../css/UploadForm.module.css"; // Import CSS module
+import styles from "../style/UploadForm.module.css"; // Import CSS module
 import logo from "../assets/logo.jpg";
 import api from "../Api/api";
 

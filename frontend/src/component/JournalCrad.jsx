@@ -1,6 +1,6 @@
 import React from "react";
 import { Download, Edit } from "lucide-react";
-import styles from "../css/JournalCrad.module.css"; // Import the CSS module
+import styles from "../style/JournalCrad.module.css"; // Import the CSS module
 
 const JournalCrad = ({ journal }) => {
   return (

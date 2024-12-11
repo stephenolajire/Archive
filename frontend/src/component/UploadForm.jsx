@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2"; // Import SweetAlert2
-import styles from "../style/UploadForm.module.css"; // Import CSS module
+import styles from "../css/UploadForm.module.css"; // Import CSS module
 import logo from "../assets/logo.jpg";
 import api from "../Api/api";
 
@@ -51,17 +51,16 @@ const UploadForm = () => {
       return;
     }
 
-    const uploadData = {
-      project_name: projectName,
-      project_file: projectFile,
-      faculty: faculty,
-      discipline: discipline,
-      front_page : frontPage,
-      department : department
-    };
+    const uploadData = new FormData();
+    uploadData.append("project_name", projectName);
+    uploadData.append("department", department);
+    uploadData.append("discipline", discipline);
+    uploadData.append("faculty", faculty);
+    uploadData.append("front_page", frontPage);
+    uploadData.append("project_file", projectFile);
 
-    setLoading(true);
     try {
+      setLoading(true);
       const response = await api.post("upload/", uploadData);
       if (response.status === 201) {
         Swal.fire("Success!", "Project uploaded successfully", "success");

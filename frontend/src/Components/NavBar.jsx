@@ -6,7 +6,7 @@ import { House, BookOpen, Plus, Contact, Menu, X } from "lucide-react";
 import logo from "../assets/logo.jpg";
 import { GlobalContext } from "../GlobalContext/GlobalContext";
 
-const Navigation = () => {
+const NavBar = () => {
   const { isAuthenticated, checkAuth, setIsModalOpen, isModalOpen } =
     useContext(GlobalContext);
   const [menu, setMenu] = useState(true);
@@ -141,4 +141,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default NavBar;

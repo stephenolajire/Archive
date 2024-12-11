@@ -25,10 +25,16 @@ class ArchiveView(generics.CreateAPIView):
             {"message": "Validation error", "errors": serializer.errors},
             status=status.HTTP_400_BAD_REQUEST
         )
-    
 
-class GetArchiveView (generics.ListAPIView):
+class GetArchiveView(generics.ListAPIView):
     permission_classes = [AllowAny]
     serializer_class = ArchiveSerializer
     pagination_class = CustomPagination
-    queryset = Archive.objects.all()
+
+    def get_queryset(self):
+        # Define your queryset logic
+        return Archive.objects.all()
+
+    def get_serializer_context(self):
+        # Add request to serializer context
+        return {"request": self.request}

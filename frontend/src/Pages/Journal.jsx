@@ -8,11 +8,11 @@ const Journal = () => {
 
   return (
     <main className={styles.main}>
-      {journals?.map((journal) => (
-        <div className={styles.mainContainer} key={journal.id}>
+      <div className={styles.mainContainer}>
+        {journals?.map((journal) => (
           <JournalCrad key={journal.id} journal={journal} />
-        </div>
-      ))}
+        ))}
+      </div>
     </main>
   );
 };

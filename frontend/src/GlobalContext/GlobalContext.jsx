@@ -42,7 +42,7 @@ export const GlobalProvider = ({children}) => {
     }, []);
 
 
-    const fetchJournals = async(url= `${render}journals`) => {
+    const fetchJournals = async(url= `${link}journals`) => {
         try {
             const response = await axios.get(url);
             if (response) {

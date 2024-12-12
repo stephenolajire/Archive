@@ -21,7 +21,7 @@
     font-weight: bold;
 }
 
-.text, .text2 {
+.text, .text2{
     color: var(--primary-color);
     font-size: var(--text-size);
     font-weight: bold;
@@ -30,8 +30,10 @@
     margin: 1rem 0rem;
 }
 
-.text2 {
+.text2{
     display: none;
+    color: var(--tertiary-color);
+    mix-blend-mode:color-dodge;
 }
 
 .btn {
@@ -89,8 +91,7 @@
         display: none;
     }
 
-    .text2 {
+    .text2{
         display: block;
-        color: var(--primary-color);
     }
 }

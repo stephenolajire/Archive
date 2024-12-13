@@ -7,8 +7,7 @@ import logo from "../assets/logo.jpg";
 import { GlobalContext } from "../GlobalContext/GlobalContext";
 
 const Navigation = () => {
-  const { isAuthenticated, checkAuth, setIsModalOpen, isModalOpen } =
-    useContext(GlobalContext);
+  const {isAuthenticated, checkAuth, setIsModalOpen, isModalOpen } = useContext(GlobalContext);
   const [menu, setMenu] = useState(true);
   const navigate = useNavigate();
 
@@ -68,21 +67,6 @@ const Navigation = () => {
           </NavLink>
         </li>
 
-        <li>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive ? styles.activeLink : styles.link
-            }
-            onClick={toggleMenu}
-          >
-            <div className={styles.wrapper}>
-              <Contact size={20} className={styles.icon} />
-              <p className={styles.linkText}>Contact Us</p>
-            </div>
-          </NavLink>
-        </li>
-
         {isAuthenticated ? (
           <>
             <li className={styles.logoutText} onClick={handleLogout}>
@@ -91,7 +75,10 @@ const Navigation = () => {
             <Link onClick={toggleMenu}>
               <li
                 className={styles.upload}
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  setIsModalOpen(true);
+                  toggleMenu;
+                }}
               >
                 Upload
               </li>

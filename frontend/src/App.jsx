@@ -7,6 +7,7 @@ import Login from "./User/Login";
 import Signup from "./User/Signup";
 import { GlobalProvider } from "./GlobalContext/GlobalContext";
 import UploadModal from "./modal/UploadModal";
+import EditModal from "./modal/EditModal";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         </Routes>
         {/* Include CustomModal outside of Routes to make sure it is available globally */}
         <UploadModal/>
+        <EditModal/>
       </Router>
     </GlobalProvider>
   );

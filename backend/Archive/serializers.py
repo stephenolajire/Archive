@@ -6,7 +6,7 @@ class ArchiveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Archive
-        fields = ['user', 'project_name', 'project_file', 'front_page', 'discipline', 'faculty', 'department']
+        fields = ['user', 'id', 'project_name', 'project_file', 'front_page', 'discipline', 'faculty', 'department']
 
     def validate(self, attrs):
         required_fields = ['project_name', 'project_file', 'front_page', 'department', 'discipline', 'faculty']

@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import api from "../Api/api";
 import axios from "axios";
+import Journal from "../Pages/Journal";
 
 export const GlobalContext = createContext ()
 
@@ -9,6 +10,7 @@ export const GlobalProvider = ({children}) => {
 
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [journals, setJournals] = useState([])
     const [pagination, setPagination] = useState({next:null, previous:null})
     const link = "http://127.0.0.1:8000/api/"
@@ -17,7 +19,7 @@ export const GlobalProvider = ({children}) => {
     const checkAuth = () => {
         const token = localStorage.getItem("access")
         if (!token) {
-            setIsAuthenticated (false)
+            setIsAuthenticated(false)
             return
         }
 
@@ -47,6 +49,7 @@ export const GlobalProvider = ({children}) => {
             const response = await axios.get(url);
             if (response) {
                 setJournals(response.data.results);
+                console.log(response.data)
                 setPagination({
                 next: response.data.next,
                 previous: response.data.previous,
@@ -64,6 +67,24 @@ export const GlobalProvider = ({children}) => {
         fetchJournals()
     }, [])
 
+    const [editJournal, setEditJournal] = useState([]);
+
+    const handleEdit = async (id) => {
+      console.log("Journal ID:", id);
+      try {
+        const response = await api.get(`journal/${id}`);
+        if (response.status === 200) {
+          setEditJournal(response.data);
+          setIsEditModalOpen(true)
+          console.log(response.data)
+        } else {
+          Swal.fire("Error!", "You are not permitted to Edit", "error");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
 
     return <GlobalContext.Provider 
         value={{
@@ -74,6 +95,11 @@ export const GlobalProvider = ({children}) => {
             pagination,
             checkAuth,
             fetchJournals,
+            handleEdit,
+            editJournal,
+            isEditModalOpen,
+            setIsEditModalOpen,
+            setJournals,
         }}
     >
         {children}

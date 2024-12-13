@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2"; // Import SweetAlert2
 import styles from "../style/UploadForm.module.css"; // Import CSS module
 import logo from "../assets/logo.jpg";
 import api from "../Api/api";
+import { faculties } from "../constant/constant"; 
 
 const UploadForm = () => {
   // State for form fields
@@ -25,12 +26,19 @@ const UploadForm = () => {
   // Handle file input changes with validation
   const handleFileChange = (e, setter) => {
     const file = e.target.files[0];
-    if (file && file.size > 100 * 1024 * 1024) {
-      // 5MB size limit
-      Swal.fire("Error!", "File size must be less than 100MB", "error");
+    if (file && file.size > 10 * 1024 * 1024) {
+      // 10MB size limit
+      Swal.fire("Error!", "File size must be less than 10MB", "error");
       return;
     }
     setter(file);
+  };
+
+  // Handle faculty change to update departments
+  const handleFacultyChange = (e) => {
+    const selectedFaculty = e.target.value;
+    setFaculty(selectedFaculty);
+    setDepartment(""); // Reset department when faculty changes
   };
 
   // Handle form submission
@@ -91,6 +99,7 @@ const UploadForm = () => {
           Please provide all the required information
         </p>
       </div>
+
       <div>
         <label className={styles.label} htmlFor="projectName">
           Project Title:
@@ -108,26 +117,55 @@ const UploadForm = () => {
           <p className={styles.error}>{errors.projectName}</p>
         )}
       </div>
+
+      <div>
+        <label className={styles.label} htmlFor="faculty">
+          Faculty:
+        </label>
+        <select
+          className={styles.inputText}
+          id="faculty"
+          value={faculty}
+          onChange={handleFacultyChange}
+          required
+        >
+          <option value="">Select Faculty</option>
+          {Object.keys(faculties).map((facultyKey) => (
+            <option key={facultyKey} value={facultyKey}>
+              {faculties[facultyKey].name}
+            </option>
+          ))}
+        </select>
+        {errors.faculty && <p className={styles.error}>{errors.faculty}</p>}
+      </div>
+
       <div>
         <label className={styles.label} htmlFor="department">
           Department:
         </label>
-        <input
+        <select
           className={styles.inputText}
-          type="text"
           id="department"
           value={department}
-          onChange={(e) => handleChange(e, setDepartment)}
-          placeholder="Department"
+          onChange={(e) => setDepartment(e.target.value)}
           required
-        />
+        >
+          <option value="">Select Department</option>
+          {faculty &&
+            faculties[faculty]?.departments.map((dept, index) => (
+              <option key={index} value={dept}>
+                {dept}
+              </option>
+            ))}
+        </select>
         {errors.department && (
           <p className={styles.error}>{errors.department}</p>
         )}
       </div>
+
       <div>
         <label className={styles.label} htmlFor="discipline">
-          Discipline:
+          Course:
         </label>
         <input
           className={styles.inputText}
@@ -142,21 +180,7 @@ const UploadForm = () => {
           <p className={styles.error}>{errors.discipline}</p>
         )}
       </div>
-      <div>
-        <label className={styles.label} htmlFor="faculty">
-          Faculty:
-        </label>
-        <input
-          className={styles.inputText}
-          type="text"
-          id="faculty"
-          value={faculty}
-          onChange={(e) => handleChange(e, setFaculty)}
-          placeholder="Faculty"
-          required
-        />
-        {errors.faculty && <p className={styles.error}>{errors.faculty}</p>}
-      </div>
+
       <div>
         <label className={styles.label} htmlFor="frontPage">
           Front Page (Image):
@@ -171,22 +195,24 @@ const UploadForm = () => {
         />
         {errors.frontPage && <p className={styles.error}>{errors.frontPage}</p>}
       </div>
+
       <div>
         <label className={styles.label} htmlFor="projectFile">
-          Project File: (support pdf only)
+          Project File:
         </label>
         <input
           className={styles.inputFile}
           type="file"
           id="projectFile"
           onChange={(e) => handleFileChange(e, setProjectFile)}
-          accept=".pdf"
+          accept=".pdf,.doc,.docx"
           required
         />
         {errors.projectFile && (
           <p className={styles.error}>{errors.projectFile}</p>
         )}
       </div>
+
       <button className={styles.button} type="submit" disabled={loading}>
         {loading ? "Loading..." : "Submit"}
       </button>

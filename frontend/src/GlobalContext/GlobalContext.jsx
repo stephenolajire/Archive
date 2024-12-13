@@ -72,12 +72,20 @@ export const GlobalProvider = ({ children }) => {
       if (response.status === 200) {
         setEditJournal(response.data);
         setIsEditModalOpen(true);
-        console.log(response.data);
-      } else if (response.status === 403) {
-        Swal.fire("Error!", "You are only permitted to Edit your own Journal", "error");
+        console.log(response.status);
       }
     } catch (error) {
-      console.error(error);
+      // Check if the error response status is 403
+      if (error.response && error.response.status === 403) {
+        Swal.fire(
+          "Error!",
+          "You are only permitted to Edit your own Journal",
+          "error"
+        );
+        // console.log("403 Error:", error.response.data);
+      } else {
+        console.error("Error fetching journal:", error);
+      }
     }
   };
 

@@ -74,7 +74,7 @@ export const GlobalProvider = ({ children }) => {
         setIsEditModalOpen(true);
         console.log(response.data);
       } else if (response.status === 403) {
-        Swal.fire("Error!", "You are not permitted to Edit", "error");
+        Swal.fire("Error!", "You are only permitted to Edit your own Journal", "error");
       }
     } catch (error) {
       console.error(error);

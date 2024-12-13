@@ -48,6 +48,7 @@ export const faculties = {
       "Department of Mathematics",
       "Department of Environmental Science",
       "Department of Statistics",
+      "Department of Computer Science",
     ],
   },
   FOL: {

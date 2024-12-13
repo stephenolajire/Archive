@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import api from "../Api/api";
 import axios from "axios";
-import Journal from "../Pages/Journal";
+import Swal from "sweetalert2";
 
 export const GlobalContext = createContext();
 

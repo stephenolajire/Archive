@@ -63,7 +63,7 @@ const UploadForm = () => {
     uploadData.append("project_name", projectName);
     uploadData.append("department", department);
     uploadData.append("discipline", discipline);
-    uploadData.append("faculty", faculty);
+    uploadData.append("faculty", faculties[faculty]?.name || "");
     uploadData.append("front_page", frontPage);
     uploadData.append("project_file", projectFile);
 
